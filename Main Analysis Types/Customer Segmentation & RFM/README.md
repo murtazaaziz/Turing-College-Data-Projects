@@ -9,3 +9,5 @@ Your tasks are:
 - Segment customers into Best Customers, Loyal Customers, Big Spenders, Lost Customers, and other categories.
 - Present your analyses with a dashboard by using one of these tools: Tableau/Power BI.
 - Present some insights about which customer group/customer groups the marketing team should focus on.
+
+[Scatterplot of Recency, Frequency, and Monetary Values](https://public.tableau.com/views/RFM_Analysis_17470173719130/CustomerSegmentScatterplotusingRecencyFrequencyandMonetaryValues?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
