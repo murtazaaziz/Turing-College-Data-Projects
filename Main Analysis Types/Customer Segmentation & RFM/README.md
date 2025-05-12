@@ -10,4 +10,6 @@ Your tasks are:
 - Present your analyses with a dashboard by using one of these tools: Tableau/Power BI.
 - Present some insights about which customer group/customer groups the marketing team should focus on.
 
+![image](https://github.com/user-attachments/assets/68b8a63e-a4cf-442d-a926-1ab0c808d29e)
+
 [Scatterplot of Recency, Frequency, and Monetary Values](https://public.tableau.com/views/RFM_Analysis_17470173719130/CustomerSegmentScatterplotusingRecencyFrequencyandMonetaryValues?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
