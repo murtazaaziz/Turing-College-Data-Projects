@@ -1,12 +1,30 @@
 # Customer Lifetime Value (CLV) Analysis
 
 ### Intro
-  Customer Lifetime Valueis a crucial metric within e-commerce analytics
-  
+Customer Lifetime Value (CLV) is a crucial metric within e-commerce analytics that helps businesses segment and personalize marketing efforts. It can also help businesses make smarter decisions that lead to better profitability and growth. While other indicators like new customer acquisition, retention rate, and conversion rate are important, CLV aims to integrate them all. It gives a better and more complete picture of each customer's long-term value.
+
+CLV can be measured in two ways:
+
+- Historical CLV – Based on actual purchases and relationship length so far. This provides concrete insights into spending habits.
+- Predictive CLV – An estimate of future spending based on patterns and projections. While not always exact, it helps companies forecast revenue and refine strategies.
+
+There are simplistic ways of calculating CLV but cohort analysis can provide more reliable and actionable insights as customers are segmented into cohorts.
+
+### Project Objectives
+- Complete a weekly cohort analysis for a 12-week period
+- Track users by their first event week (registration cohort) and analyze spending over 12 weeks
+- Write queries using CTE's and JOINS to extract user data (assuming the current week is 2021-01-24)
+- Using extracted data, calculate the Average Revenue per User (weekly revenue/number of users in registration cohort) for the initial registration week and the following 12 weeks.
+- Calculate Cumulative Average Revenue per User over 12 weeks and Cumulative Growth %
+- Predict Cumulative Average Revenu per User for weeks where data is missing using Cumulative Growth %
+- Apply conditional formatting as needed 
+
 ### Data Sources
   [BigQuery Dataset](https://console.cloud.google.com/bigquery?ws=!1m5!1m4!4m3!1stc-da-1!2sturing_data_analytics!3sraw_events)
 
-The following columns from this dataset were used:
+raw_events dataset was provided by Turing College. This dataset has details of website events including the date and the times the events occurred.
+
+The following columns, relavant to the project objectives,were used:
 
 ```
 field name                 type
@@ -40,7 +58,7 @@ The ARPU was summed over 12 weeks and a cumulative average and percent cumulativ
 - Cumulative average revenue per user for Nov. 1 cohort is $2.37
 - Percent cumulative growth slows from 23% at Week 1 to 6% by Week 4
 
-#### 3. Cumulative Revenue per User Predictions
+#### 3. Predictions for Cumulative Average Revenue per User 
 
 Missing data for cumulative revenue was calculated using the % cumulative growth from the previous step. 
 
@@ -54,6 +72,10 @@ Missing data for cumulative revenue was calculated using the % cumulative growth
 1. Average revenue per user is the highest upon initial website visit and generally decreases weekly across all cohorts
 2. Users spent more during Weeks 1-3 after their first website visit
 3. Seasonality likely has an effect on cohorts between Nov. 1 and Dec. 13
-4. Promotions could help boost the ARPU of users for week 0 and beyond for cohorts between Dec. 20 through Jan. 24
-5. The prediction for Average Lifetime Value for Nov. 1 to Jan. 24 cohorts is calculated to be $1.47
+4. The prediction for Average Lifetime Value for Nov. 1 to Jan. 24 cohorts is calculated to be $1.47
+
+### Recommendations
+1. Promotions could help boost the ARPU of users for week 0 and beyond for cohorts between Dec. 20 through Jan. 24
+2. Upselling and cross-selling to cohorts between Nov. 1 to Jan. 24 may help increase their ARPU and overall Average Lifetime Value 
+
    
