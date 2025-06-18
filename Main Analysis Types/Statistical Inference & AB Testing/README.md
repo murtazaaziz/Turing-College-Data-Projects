@@ -91,9 +91,9 @@ Based on the independent t-tests above, the following conclusions can be drawn:
 - Although promotion 3 does generate a higher revenue than promotion 2, it is not statistically significant.
 
 ## Recommendations
-- It is recommended for the fast-food chain to use promotion 1 for the new menu item as it generated the highest average revenue (232.4 in thousands) across 43 locations. 
-- Promotion 3 does generate a high average revenue (221.5 in thousands) across 47 locations but when compared to promotion 1 there is not a significant enough difference.
-- Promotion 2 generates the lowest average revenue (189.3 in thousands) across 47 locations and can likely be discontinued by the marketing team.
+1. It is recommended for the fast-food chain to use promotion 1 for the new menu item as it generated the highest average revenue (232.4 in thousands) across 43 locations.
+2. Promotion 3 does generate a high average revenue (221.5 in thousands) across 47 locations but when compared to promotion 1 there is not a significant enough difference.
+3. Promotion 2 generates the lowest average revenue (189.3 in thousands) across 47 locations and can likely be discontinued by the marketing team.
 
 ## Assumptions & Limitations
 **Market Homogeneity:** The analysis assumes that all markets are relatively homogeneous, and the promotional campaigns have a similar impact across different market sizes and store ages.
