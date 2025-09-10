@@ -1,0 +1,7 @@
+/* Queries productcategory table to use name of product category */
+
+SELECT
+  Name,
+  ProductCategoryID,
+FROM
+  `tc-da-1.adwentureworks_db.productcategory` ;
