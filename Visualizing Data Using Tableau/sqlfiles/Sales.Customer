@@ -1,0 +1,7 @@
+  /* Queries customer info to assist with identifying individual vs store*/
+SELECT
+  CustomerID,
+  TerritoryID,
+  CustomerType
+FROM
+  `tc-da-1.adwentureworks_db.customer`

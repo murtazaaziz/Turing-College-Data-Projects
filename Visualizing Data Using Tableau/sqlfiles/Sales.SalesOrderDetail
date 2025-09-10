@@ -1,0 +1,11 @@
+/* Queries salesorderdetail table to calculate profit */
+
+SELECT
+  `LineTotal`,
+  `OrderQty`,
+  `ProductID`,
+  `SalesOrderID`,
+  `UnitPrice`,
+  `UnitPriceDiscount`
+FROM
+  `tc-da-1.adwentureworks_db.salesorderdetail` ;

@@ -1,0 +1,8 @@
+/* Queries product table to use standard cost of product when calculating profit */
+
+SELECT
+  ProductID,
+  ProductSubcategoryID,
+  StandardCost
+FROM
+  `tc-da-1.adwentureworks_db.product` ;

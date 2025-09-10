@@ -1,0 +1,8 @@
+/* Queries productsubcategory table to link name of product subcategory */
+
+SELECT
+  Name,
+  ProductCategoryID,
+  ProductSubcategoryID
+FROM
+  `tc-da-1.adwentureworks_db.productsubcategory` ;
