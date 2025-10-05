@@ -6,70 +6,74 @@ We look at various demographic, behavioral, and medical risk factors along with 
 
 ## Executive Summary
 
-This analysis applied logistic regression to predict 10-year coronary heart disease (CHD) risk using the Framingham dataset. At the default threshold (0.5), the model achieved high overall accuracy (86%) but failed to identify most true CHD cases (recall only 0.09). Adjusting the threshold to 0.18 significantly improved recall (0.60) for at-risk individuals, though at the cost of reduced precision (0.30) and lower overall accuracy (73%).
+This project developed a **logistic regression model** to predict **10-year coronary heart disease (CHD) risk** using demographic, behavioral, and clinical variables from the Framingham dataset. After addressing **class imbalance** and removing multicollinear features (isSmoking, diaBP, prevalentHyp, diabetes), the refined model demonstrated **balanced sensitivity and specificity** with improved recall for the minority class (CHD).
 
-Key predictors of CHD risk include age, systolic blood pressure, smoking, glucose, and blood pressure medication use. Female sex and higher education were protective. These findings align with established cardiovascular risk factors, suggesting the model is clinically meaningful but must be carefully calibrated for deployment.
+At the **default threshold (0.5)**, the model achieved **0.67 accuracy** and **0.68 recall** for CHD cases. When the **threshold was optimized to 0.47, recall improved to 0.73**, indicating the model became better at identifying individuals at risk of CHD, while **accuracy slightly decreased to 0.64** — a reasonable trade-off for improved sensitivity.
+
+The model identified **age, systolic blood pressure, cigarette consumption, total cholesterol, and glucose levels** as the strongest predictors of CHD risk, while **female sex and higher education** were protective. These findings align with established cardiovascular research, supporting the model’s validity and interpretability.
 
 ## Key Takeaways
-### **Model performance**
+#### **1. Model performance**
 
-#### Default threshold (0.5):
+| Metric              | Default Threshold (0.5) | Optimal Threshold (0.47) |
+| :------------------ | :---------------------: | :----------------------: |
+| **Accuracy**        |           0.67          |           0.64           |
+| **Precision (CHD)** |           0.27          |           0.26           |
+| **Recall (CHD)**    |           0.68          |           0.73           |
+| **F1 (CHD)**        |           0.38          |           0.38           |
 
-* Accuracy: 0.86
 
-* Precision (CHD cases): 0.78
+---
 
-* Recall (CHD cases): 0.09
+* After addressing class imbalance, the model now detects over two-thirds of true CHD cases, a major improvement from earlier versions.
 
-* F1-score (CHD cases): 0.16
+* However, precision remains modest (~0.26–0.27), meaning that some non-CHD individuals are flagged as high-risk — an acceptable trade-off in preventive screening contexts.
 
-* Interpretation: The model is very conservative — it rarely predicts someone will develop CHD, resulting in almost all positives being missed (false negatives).
+* The slight drop in overall accuracy after rebalancing reflects a model more sensitive to minority cases (CHD), a desired outcome in clinical risk prediction.
 
-#### Optimal threshold (0.18):
+#### **2. Feature Insights**
 
-* Accuracy: 0.73
+**Top risk-increasing predictors:**
+* Age
+* Systolic blood pressure
+* Cigarettes per day
+* Total cholesterol
+* Glucose levels
+* Use of blood pressure medication
 
-* Precision (CHD cases): 0.30
+**Protective predictors:**
 
-* Recall (CHD cases): 0.60
+* Female sex (consistent with lower CHD incidence)
+* Higher education (proxy for socioeconomic and behavioral factors)
 
-* F1-score (CHD cases): 0.41
+#### **3. Methodological Improvements**
 
-* Interpretation: By lowering the threshold, the model identifies more than half of CHD cases (better sensitivity), but at the cost of more false alarms (false positives).
+* **Class imbalance correction** (class-weight adjustment) helped the model better detect CHD cases.
 
-#### Risk Factors
+* **Multicollinearity mitigation** improved model stability and interpretability by removing overlapping predictors.
 
-* Strongest risk-increasing predictors: age, systolic blood pressure, smoking intensity, glucose, and use of BP medication.
-
-* Protective predictors: female sex, higher education, lower diastolic BP, and lower resting heart rate.
-
-* Age is the leading risk-increasing factor; increases CHD risk by about 1.69x. However, this is not a modifiable risk factor
+* **Pipeline automation** ensures consistent preprocessing (imputation, scaling, encoding) and model training.
 
 ## Recomendations
 
+**For Model Application**
 
-**1. Threshold Calibration for Clinical Use**
+* Use the lower threshold (≈0.47) in clinical screening to prioritize sensitivity (identifying more true CHD cases).
 
-* Use a lower threshold (~0.18) if the goal is early detection of high-risk patients (prioritizing recall). This ensures more at-risk individuals are flagged for further screening or intervention.
+* Present probabilities, not just binary labels, allowing clinicians to interpret risk on a continuous scale.
 
-* Use the default or higher threshold if the goal is to minimize false positives (e.g., in resource-limited screening settings).
+* Integrate with a risk stratification framework, such as categorizing probabilities into low, moderate, and high risk groups.
 
-**2. Decision Context Matters**
+**For Further Model Improvement**
 
-* In preventive healthcare, missing a true case (false negative) is riskier than a false alarm. Therefore, the 0.18 threshold is recommended for clinical screening tools.
+* Enhance precision through feature engineering (e.g., interactions between age × BP or smoking × cholesterol).
 
-* In contexts where downstream testing is costly or invasive, a higher threshold may be preferable.
+* Test alternative models (Random Forest, XGBoost, Logistic Regression with ElasticNet regularization) to capture potential nonlinear relationships.
 
-**3. Model Development Improvements**
+**For Broader Impact**
 
-* Address class imbalance via oversampling (SMOTE) or class-weighted logistic regression to reduce bias against the minority (CHD) class.
+* Validate the model on an external dataset or recent cohort to ensure generalizability beyond the Framingham population.
 
-* Explore non-linear models (Random Forest, XGBoost) to potentially improve ROC-AUC and balance precision-recall tradeoffs.
+* Incorporate the model into a decision-support dashboard where clinicians can input patient data and view individualized CHD risk scores.
 
-* Reassess using a confusion matrix to quantify false negatives and false positives under different thresholds.
-
-**4. Clinical Integration**
-
-* Combine this model with traditional risk calculators (e.g., Framingham Risk Score) for validation.
-
-* Provide results to clinicians as risk probabilities rather than binary predictions, leaving final decision-making to medical judgment.
+* Share findings with clinical collaborators to evaluate potential integration into preventive health programs or patient education tools.
